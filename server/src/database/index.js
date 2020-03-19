@@ -1,7 +1,10 @@
-import mongoose from 'mongoose';
+import Knex from 'knex';
 
-import configMongoose from '~/config/mongoose';
+const knex = Knex({
+  client: 'sqlite3',
+  connection: {
+    filename: './scheduly.sqlite',
+  },
+});
 
-const connection = mongoose.connect(configMongoose.url, configMongoose.options);
-
-export default connection;
+export default knex;
