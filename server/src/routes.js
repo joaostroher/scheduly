@@ -5,6 +5,10 @@ import ScheduleController from '~/app/controllers/ScheduleController';
 
 const routes = new Router();
 
+routes.get('/', (req, res) => {
+  res.status(200).json({ test: true });
+});
+
 routes.get('/customers', CustomerController.index);
 
 routes.get('/schedules', ScheduleController.index);
