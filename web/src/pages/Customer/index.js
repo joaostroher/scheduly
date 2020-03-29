@@ -22,68 +22,68 @@ export default function Register() {
 
   return (
     <CustomerStyles>
-      <form>
-        <strong>Perfil</strong>
-
-        <div className="input-container">
-          <label htmlFor="name">Nome</label>
+      <div className = "container">
+      <div className = "content">
+      <p>
+      <strong>Cadastro Usuário</strong>
+      </p>
+      <form onSubmit={handleSaveCustomer}>
+          <label htmlFor="name">NOME</label>
           <input
             name="name"
             id="name"
+            placeholder="Digite seu nome"
             required
             value={customer.name}
             onChange={handleInputChange}
           />
-        </div>
-
-        <div className="input-container">
-          <label htmlFor="email">E-mail</label>
+          <label htmlFor="email">E-MAIL</label>
           <input
             name="email"
             id="email"
+            placeholder="Digite seu e-mail"
             required
             value={customer.email}
             onChange={handleInputChange}
           />
-        </div>
-
-        <div className="input-container">
           <label htmlFor="cpf">CPF</label>
           <input
             name="cpf"
             id="cpf"
+            placeholder="000.000.000-00"
             value={customer.cpf}
             onChange={handleInputChange}
           />
-        </div>
-
-        <div className="input-container">
-          <label htmlFor="phone">Telefone</label>
+          <label htmlFor="phone">TELEFONE</label>
           <input
             name="phone"
             id="phone"
+            placeholder="(00) 00000-0000"
             value={customer.phone}
             onChange={handleInputChange}
           />
-        </div>
-
-        <div className="input-container">
-          <label htmlFor="password">Senha</label>
+          <label htmlFor="password">SENHA</label>
           <input
             name="password"
             id="password"
             type="password"
+            placeholder="Digite sua senha"
             required
             value={customer.password}
             onChange={handleInputChange}
           />
-        </div>
 
-        <button type="submit" onClick={handleSaveCustomer}>
+        <button class="btn" type="submit">
           Cadastrar
         </button>
-        <Link to="/login">Já possuo cadastro</Link>
+        <div class="register">
+        <Link to="/">
+        <span>Já possui um cadastro?</span>
+        </Link> 
+      </div> 
       </form>
+      </div>
+      </div>
     </CustomerStyles>
   );
 }

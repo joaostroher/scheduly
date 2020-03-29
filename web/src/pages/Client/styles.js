@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import logoImage from '../../assets/logo.png';
 
-export const HomeStyles = styled.div`
+export const ClientStyles = styled.div`
 
 
   body, input, button{
@@ -21,9 +21,6 @@ export const HomeStyles = styled.div`
   .register {
       padding: 10px 0;
       height: 30px;
-      font-size: 14px;
-      font-weight: bold;
-      text-align: center;  
   }
 
   .register span {
@@ -55,7 +52,7 @@ export const HomeStyles = styled.div`
   }
   
   .content > p {
-    font-size: 25px;
+    font-size: 20px;
     line-height: 30px;
     text-align: center;
     margin-bottom: 30px
@@ -66,25 +63,10 @@ export const HomeStyles = styled.div`
     flex-direction: column;
   }
   
-  .content form label {
-    font-size: 14px;
-    color: #444444;
-    font-weight: bold;
-    margin-bottom: 8px;
-  }
   
   .content form label span {
     font-weight: normal;
     font-size: 12px;
-  }
-  
-  .content form input {
-    margin-bottom: 20px;
-    border: 1px solid #dddddd;
-    border-radius: 2px;
-    height: 45px;
-    padding: 0 15px;
-    font-size: 16px;
   }
   
   .content button.btn {
@@ -98,10 +80,92 @@ export const HomeStyles = styled.div`
     background: rgb(164,124,63);
     color: #ffffff;
     cursor: pointer;
+    margin-top: 30px;
   }
   
   .content button.btn:hover {
     background: rgb(150,110,50);
+  }
+
+  .service {
+    position: relative;
+    width: 100%;
+    height: 90px;
+    border-radius: 5px;
+    background: rgb(242,242,242);
+    border-color: black;
+  }
+  
+  .date {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    width: 20%;
+    height: 100%;
+    background: rgb(180,180,180);
+    border-radius: 5px;
+  }
+
+  .date label {
+    font-size: 18px;
+    text-align: center;
+    margin: 3.5px;
+    font-weight: bold;
+    color: white;
+  }
+
+  .status {
+    position: absolute;
+    width: 150px;
+    height: 25px;
+    right: 0px;
+    bottom: 0px;
+    background: green;
+    padding: 3px;
+    text-align: center;
+    border-radius: 5px;
+  }
+
+  .status label{
+    font-size: 12px;
+    font-weight: bold;
+    color: white;
+  }
+
+  .details{
+    position: absolute;
+    top: 0px;
+    left: 20%;
+    height: 100%;
+    width: 170px;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    padding: 5px;
+  }
+
+  .details label {
+    font-size: 14px;
+    font-weight: bold;
+    margin: auto 0 7px;
+  }
+
+  .job {
+    position: absolute;
+    top: 0px;
+    right: 0;
+    height: 65px;
+    width: 150px;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    padding: 10px;
+  }
+
+  .job label {
+    font-size: 14px;
+    font-weight: bold;
+    margin: auto 0 3px;
   }
 
 `;
