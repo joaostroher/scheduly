@@ -44,32 +44,30 @@ export default function Register() {
 
   return (
     <CustomerStyles>
-      <form>
-        <strong>Perfil</strong>
-
-        <div className="input-container">
-          <label htmlFor="name">Nome</label>
+      <div className = "container">
+      <div className = "content">
+      <p>
+      <strong>Cadastro Usuário</strong>
+      </p>
+      <form onSubmit={handleSaveCustomer}>
+          <label htmlFor="name">NOME</label>
           <input
             name="name"
             id="name"
+            placeholder="Digite seu nome"
             required
             value={customer.name}
             onChange={handleInputChange}
           />
-        </div>
-
-        <div className="input-container">
-          <label htmlFor="email">E-mail</label>
+          <label htmlFor="email">E-MAIL</label>
           <input
             name="email"
             id="email"
+            placeholder="Digite seu e-mail"
             required
             value={customer.email}
             onChange={handleInputChange}
           />
-        </div>
-
-        <div className="input-container">
           <label htmlFor="cpf">CPF</label>
           <InputMask
             name="cpf"
@@ -77,9 +75,7 @@ export default function Register() {
             mask="999.999.999-99"
             value={customer.cpf}
             onChange={handleInputChange}
-          />
-        </div>
-
+          />      
         <div className="input-container">
           <label htmlFor="phone">Telefone</label>
           <InputMask
@@ -89,19 +85,18 @@ export default function Register() {
             value={customer.phone}
             onChange={handleInputChange}
           />
-        </div>
-
-        <div className="input-container">
-          <label htmlFor="password">Senha</label>
+          <label htmlFor="password">SENHA</label>
           <input
             name="password"
             id="password"
             type="password"
+            placeholder="Digite sua senha"
             required
             value={customer.password}
             onChange={handleInputChange}
           />
         </div>
+
 
         <button type="submit" onClick={handleSaveCustomer}>
           {logado ? 'Salvar' : 'Cadastrar'}
@@ -109,6 +104,8 @@ export default function Register() {
 
         {!logado ? <Link to="/login">Já possuo cadastro</Link> : null}
       </form>
+      </div>
+      </div>
     </CustomerStyles>
   );
 }

@@ -1,4 +1,5 @@
 import { createGlobalStyle } from 'styled-components';
+import backgroundImage from '../assets/background.jpg';
 
 export default createGlobalStyle`
   @import url('https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap');
@@ -19,8 +20,9 @@ export default createGlobalStyle`
   }
 
   body {
-    background: linear-gradient(-90deg, #b49d9d, #b49d84);
-    -webkit-font-smoothing: antialiased;
+    background: black url(${backgroundImage}) no-repeat;
+    background-size: cover;
+    -webkit-font-smoothing: antialiased !important;
   }
 
   body, input, button {

@@ -1,20 +1,47 @@
 import styled from 'styled-components';
+import logoImage from '../../assets/logo.png';
 
-export const CustomerStyles = styled.div`
+export const BarberStyles = styled.div`
 
-body, input, button{
-  font-family: 'Roboto', Arial, Helvetica, sans-serif;
-  font-size: 14px;
-}
 
-.container {
-  margin: 80px auto 0;
-  max-width: 450px;
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
+  body, input, button{
+    font-family: 'Roboto', Arial, Helvetica, sans-serif;
+    font-size: 14px;
+  }
+
+  .logo {
+      background: black url(${logoImage}) no-repeat;
+      background-size: cover;
+      margin: 0 auto 20px;
+      height: 140px;
+      width: 100%;
+      background-color: white;
+  }
+
+  .register {
+      padding: 10px 0;
+      height: 30px;
+  }
+
+  .register span {
+    font-size: 14px;
+    color: #444444;
+    font-weight: bold; 
+  }
+
+  .register span:hover {
+    color: rgb(150,110,50);
+  }
+
+  
+  .container {
+    margin: 80px auto 0;
+    max-width: 450px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
 
 .content {
     width: 100%;
@@ -74,21 +101,5 @@ body, input, button{
     background: rgb(150,110,50);
   }
 
-  .register {
-    padding: 10px 0;
-    height: 30px;
-    font-size: 14px;
-    font-weight: bold;
-    text-align: center;  
-}
 
-.register span {
-  font-size: 14px;
-  color: #444444;
-  font-weight: bold; 
-}
-
-.register span:hover {
-  color: rgb(150,110,50);
-}
 `;
