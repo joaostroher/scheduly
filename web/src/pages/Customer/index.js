@@ -23,7 +23,7 @@ export default function Register() {
 
     if (logado) {
       await api
-        .put('/api/customers', customer)
+        .put('customers', customer)
         .then(function() {
           window.alert('Registro Salvo');
         })
@@ -32,7 +32,7 @@ export default function Register() {
         });
     } else {
       await api
-        .post('/api/customers', customer)
+        .post('customers', customer)
         .then(function() {
           window.alert('Registro Criado');
         })
