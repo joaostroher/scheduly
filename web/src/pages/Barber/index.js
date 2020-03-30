@@ -1,10 +1,8 @@
 import React, { useState } from 'react';
-import { BarberStyles } from './styles';
 import { Link } from 'react-router-dom';
+import { BarberStyles } from './styles';
 
-async function handleSubmit(){
-  
-}
+async function handleSubmit() {}
 
 export default function Barber() {
   const [email, setEmail] = useState('');
@@ -12,11 +10,11 @@ export default function Barber() {
 
   return (
     <BarberStyles>
-    <div className = "container">
-    <div className = "content">
-      <strong>BARBER</strong>
-    </div>
-    </div>
+      <div className="container">
+        <div className="content">
+          <strong>BARBER</strong>
+        </div>
+      </div>
     </BarberStyles>
-);
+  );
 }

@@ -44,67 +44,65 @@ export default function Register() {
 
   return (
     <CustomerStyles>
-      <div className = "container">
-      <div className = "content">
-      <p>
-      <strong>Cadastro Usuário</strong>
-      </p>
-      <form onSubmit={handleSaveCustomer}>
-          <label htmlFor="name">NOME</label>
-          <input
-            name="name"
-            id="name"
-            placeholder="Digite seu nome"
-            required
-            value={customer.name}
-            onChange={handleInputChange}
-          />
-          <label htmlFor="email">E-MAIL</label>
-          <input
-            name="email"
-            id="email"
-            placeholder="Digite seu e-mail"
-            required
-            value={customer.email}
-            onChange={handleInputChange}
-          />
-          <label htmlFor="cpf">CPF</label>
-          <InputMask
-            name="cpf"
-            id="cpf"
-            mask="999.999.999-99"
-            value={customer.cpf}
-            onChange={handleInputChange}
-          />      
-        <div className="input-container">
-          <label htmlFor="phone">Telefone</label>
-          <InputMask
-            name="phone"
-            id="phone"
-            mask="(99) 99999-9999"
-            value={customer.phone}
-            onChange={handleInputChange}
-          />
-          <label htmlFor="password">SENHA</label>
-          <input
-            name="password"
-            id="password"
-            type="password"
-            placeholder="Digite sua senha"
-            required
-            value={customer.password}
-            onChange={handleInputChange}
-          />
+      <div className="container">
+        <div className="content">
+          <p>
+            <strong>Cadastro Usuário</strong>
+          </p>
+          <form onSubmit={handleSaveCustomer}>
+            <label htmlFor="name">NOME</label>
+            <input
+              name="name"
+              id="name"
+              placeholder="Digite seu nome"
+              required
+              value={customer.name}
+              onChange={handleInputChange}
+            />
+            <label htmlFor="email">E-MAIL</label>
+            <input
+              name="email"
+              id="email"
+              placeholder="Digite seu e-mail"
+              required
+              value={customer.email}
+              onChange={handleInputChange}
+            />
+            <label htmlFor="cpf">CPF</label>
+            <InputMask
+              name="cpf"
+              id="cpf"
+              mask="999.999.999-99"
+              value={customer.cpf}
+              onChange={handleInputChange}
+            />
+
+            <label htmlFor="phone">Telefone</label>
+            <InputMask
+              name="phone"
+              id="phone"
+              mask="(99) 99999-9999"
+              value={customer.phone}
+              onChange={handleInputChange}
+            />
+            <label htmlFor="password">SENHA</label>
+            <input
+              name="password"
+              id="password"
+              type="password"
+              placeholder="Digite sua senha"
+              required
+              value={customer.password}
+              onChange={handleInputChange}
+            />
+
+            <button type="submit" onClick={handleSaveCustomer}>
+              {logado ? 'Salvar' : 'Cadastrar'}
+            </button>
+
+            {!logado ? <Link to="/login">Já possuo cadastro</Link> : null}
+          </form>
         </div>
-
-
-        <button type="submit" onClick={handleSaveCustomer}>
-          {logado ? 'Salvar' : 'Cadastrar'}
-        </button>
-
-        {!logado ? <Link to="/login">Já possuo cadastro</Link> : null}
-      </form>
-      </div>
       </div>
     </CustomerStyles>
   );

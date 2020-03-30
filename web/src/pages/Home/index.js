@@ -3,8 +3,7 @@ import { Link } from 'react-router-dom';
 import { logout } from '~/class/customerClass';
 import { HomeStyles } from './styles';
 
-async function handleSubmit(){
-}
+async function handleSubmit() {}
 
 export default function Home() {
   const [email, setEmail] = useState('');
@@ -12,43 +11,45 @@ export default function Home() {
 
   return (
     <HomeStyles>
-    <div>
-      <Link to="/login" onClick={logout()}>
-        Sair
-      </Link>
-    </div>
-    <div className = "container">
-    <div className = "content">
-    <div className = "logo"></div>
-    <p>
-      <strong>Login</strong>
-    </p>
-    <form onSubmit={handleSubmit}>
-      <label htmlFor="email">E-MAIL</label>
-      <input 
-        id="email" 
-        type="email" 
-        placeholder="Digite seu e-mail"
-        value={email}
-        onChange={event => setEmail(event.target.value)}
-      />
-      <label htmlFor="password">SENHA</label>
-      <input 
-        id="password" 
-        type="password" 
-        placeholder="Digite sua senha"
-        value={password}
-        onChange={event => setPassword(event.target.value)}
-      />
-      <button class="btn" type="submit">Entrar</button>
-    </form>
-    <div class="register">
-    <Link to="/register">
-      <span>Não possui cadastro?</span>
-      </Link> 
-    </div> 
-    </div>
-    </div>    
+      <div>
+        <Link to="/login" onClick={logout()}>
+          Sair
+        </Link>
+      </div>
+      <div className="container">
+        <div className="content">
+          <div className="logo" />
+          <p>
+            <strong>Login</strong>
+          </p>
+          <form onSubmit={handleSubmit}>
+            <label htmlFor="email">E-MAIL</label>
+            <input
+              id="email"
+              type="email"
+              placeholder="Digite seu e-mail"
+              value={email}
+              onChange={event => setEmail(event.target.value)}
+            />
+            <label htmlFor="password">SENHA</label>
+            <input
+              id="password"
+              type="password"
+              placeholder="Digite sua senha"
+              value={password}
+              onChange={event => setPassword(event.target.value)}
+            />
+            <button className="btn" type="submit">
+              Entrar
+            </button>
+          </form>
+          <div className="register">
+            <Link to="/register">
+              <span>Não possui cadastro?</span>
+            </Link>
+          </div>
+        </div>
+      </div>
     </HomeStyles>
-);
+  );
 }

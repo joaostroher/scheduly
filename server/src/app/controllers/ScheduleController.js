@@ -1,5 +1,3 @@
-import Customer from '~/app/models/Customer';
-import Service from '~/app/models/Service';
 import Schedule from '~/app/models/Schedule';
 
 class ScheduleController {
