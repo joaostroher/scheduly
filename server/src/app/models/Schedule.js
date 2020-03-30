@@ -1,7 +1,12 @@
 import mongoose, { Schema } from 'mongoose';
+import './Service';
 
 const ScheduleSchema = new Schema({
-  date_time: {
+  date_time_start: {
+    type: Date,
+    required: true,
+  },
+  date_time_end: {
     type: Date,
     required: true,
   },
@@ -24,6 +29,7 @@ const ScheduleSchema = new Schema({
   observation: {
     type: String,
     required: false,
+    default: '',
   },
 });
 

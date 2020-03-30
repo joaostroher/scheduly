@@ -4,6 +4,7 @@ import 'express-async-errors';
 // import path from 'path';
 import Youch from 'youch';
 import cors from 'cors';
+import { ValidationError } from 'yup';
 
 import '~/database';
 import routes from '~/routes';
@@ -34,6 +35,15 @@ class App {
 
   exceptionHandler() {
     this.server.use(async (err, req, res, next) => {
+      if (err instanceof ValidationError) {
+        const errors = err.inner.map(({ path, type, message }) => ({
+          path,
+          type,
+          message,
+        }));
+        const { message } = err;
+        return res.status(400).json({ message, errors });
+      }
       if (process.env.NODE_ENV === 'development') {
         const errors = await new Youch(err, req).toHTML();
         return res.status(500).send(errors);
