@@ -1,23 +1,45 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import InputMask from 'react-input-mask';
 import { CustomerStyles } from './styles';
 import api from '~/services/api';
+import { getCustomer, isAuthenticated } from '~/class/customerClass';
 
 export default function Register() {
-  const [customer, setcustomer] = useState({});
+  const [customer, setCustomer] = useState(getCustomer() || {});
+  const logado = isAuthenticated();
 
   function handleInputChange(e) {
     e.preventDefault();
-    setcustomer({ ...customer, [e.target.name]: e.target.value });
+
+    setCustomer({ ...customer, [e.target.name]: e.target.value });
   }
 
   async function handleSaveCustomer(e) {
     e.preventDefault();
 
-    const res = await api.post('/personages', customer);
+    customer.cpf = customer.cpf.replace(/\D/g, '');
+    customer.phone = customer.phone.replace(/\D/g, '');
 
-    if (res) window.alert('Cliente criado');
-    else window.alert('Falha ao criar Cliente');
+    if (logado) {
+      await api
+        .put('/api/customers', customer)
+        .then(function() {
+          window.alert('Registro Salvo');
+        })
+        .catch(function(error) {
+          window.alert(JSON.stringify(error));
+        });
+    } else {
+      await api
+        .post('/api/customers', customer)
+        .then(function() {
+          window.alert('Registro Criado');
+        })
+        .catch(function(error) {
+          window.alert(JSON.stringify(error));
+        });
+    }
   }
 
   return (
@@ -47,18 +69,19 @@ export default function Register() {
             onChange={handleInputChange}
           />
           <label htmlFor="cpf">CPF</label>
-          <input
+          <InputMask
             name="cpf"
             id="cpf"
-            placeholder="000.000.000-00"
+            mask="999.999.999-99"
             value={customer.cpf}
             onChange={handleInputChange}
-          />
-          <label htmlFor="phone">TELEFONE</label>
-          <input
+          />      
+        <div className="input-container">
+          <label htmlFor="phone">Telefone</label>
+          <InputMask
             name="phone"
             id="phone"
-            placeholder="(00) 00000-0000"
+            mask="(99) 99999-9999"
             value={customer.phone}
             onChange={handleInputChange}
           />
@@ -72,15 +95,14 @@ export default function Register() {
             value={customer.password}
             onChange={handleInputChange}
           />
+        </div>
 
-        <button class="btn" type="submit">
-          Cadastrar
+
+        <button type="submit" onClick={handleSaveCustomer}>
+          {logado ? 'Salvar' : 'Cadastrar'}
         </button>
-        <div class="register">
-        <Link to="/">
-        <span>Já possui um cadastro?</span>
-        </Link> 
-      </div> 
+
+        {!logado ? <Link to="/login">Já possuo cadastro</Link> : null}
       </form>
       </div>
       </div>

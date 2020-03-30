@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import { HomeStyles } from './styles';
 import { Link } from 'react-router-dom';
+import { logout } from '~/class/customerClass';
+import { HomeStyles } from './styles';
 
 async function handleSubmit(){
 }
@@ -11,6 +12,11 @@ export default function Home() {
 
   return (
     <HomeStyles>
+    <div>
+      <Link to="/login" onClick={logout()}>
+        Sair
+      </Link>
+    </div>
     <div className = "container">
     <div className = "content">
     <div className = "logo"></div>
@@ -42,7 +48,7 @@ export default function Home() {
       </Link> 
     </div> 
     </div>
-    </div>
+    </div>    
     </HomeStyles>
 );
 }

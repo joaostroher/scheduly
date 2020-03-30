@@ -2,6 +2,8 @@ import React from 'react';
 import { BrowserRouter } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
 
+import './configs/ReactotrongConfig';
+
 import theme from '~/theme';
 import Routes from '~/routes';
 
