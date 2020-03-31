@@ -5,7 +5,9 @@
   "license": "MIT",
   "scripts": {
     "dev": "nodemon src/server.js",
-    "test": "jest"
+    "test": "jest",
+    "test:watch": "jest --bail 1 --watch",
+    "test:coverage": "jest --coverage"
   },
   "_moduleAliases": {
     "~": "./src"
@@ -31,6 +33,7 @@
     "eslint-import-resolver-alias": "^1.1.2",
     "eslint-plugin-import": "^2.18.2",
     "eslint-plugin-prettier": "^3.1.2",
+    "faker": "^4.1.0",
     "jest": "^25.2.3",
     "nodemon": "^2.0.2",
     "prettier": "^1.19.1",
