@@ -6,20 +6,22 @@ import Customer from '~/app/models/Customer';
 import Schedule from '~/app/models/Schedule';
 
 export default {
-  async createService() {
+  async createService(override) {
     return Service.create({
       name: faker.lorem.sentence(),
       time: faker.random.number(120),
+      ...override,
     });
   },
-  async createCustomer() {
+  async createCustomer(override) {
     return Customer.create({
       name: faker.name.findName(),
       email: faker.internet.email(),
       password: faker.internet.password(),
+      ...override,
     });
   },
-  async createSchedule() {
+  async createSchedule(override) {
     const date = faker.date.future();
     const customer = await this.createCustomer();
     const service = await this.createService();
@@ -30,6 +32,7 @@ export default {
       customer_id: customer.id,
       service_id: service.id,
       observation: faker.lorem.paragraph(),
+      ...override,
     });
   },
 };
