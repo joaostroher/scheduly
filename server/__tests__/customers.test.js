@@ -4,6 +4,7 @@ import app from '~/app';
 import clearDatabase from './utils/clearDatabase';
 import seeds from './utils/seeds';
 
+describe('customers', () => {
   beforeEach(async () => {
     await clearDatabase();
   });
