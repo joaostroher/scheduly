@@ -93,13 +93,22 @@ module.exports = {
   // notifyMode: "failure-change",
 
   // A preset that is used as a base for Jest's configuration
-  // preset: undefined,
+  preset: '@shelf/jest-mongodb',
 
   // Run tests from one or more projects
   // projects: undefined,
 
   // Use this configuration option to add custom reporters to Jest
-  // reporters: undefined,
+  reporters: [
+    'default',
+    [
+      'jest-junit',
+      {
+        outputDirectory: '__tests__/coverage/junit/',
+        outputName: 'junit.xml',
+      },
+    ],
+  ],
 
   // Automatically reset mock state between every test
   // resetMocks: false,
@@ -134,7 +143,7 @@ module.exports = {
   // snapshotSerializers: [],
 
   // The test environment that will be used for testing
-  testEnvironment: 'node',
+  //testEnvironment: 'node',
 
   // Options that will be passed to the testEnvironment
   // testEnvironmentOptions: {},

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites name="jest tests" tests="11" failures="4" time="3.008">
+  <testsuite name="schedules" errors="0" failures="0" skipped="0" timestamp="2020-05-28T01:56:10" time="1.591" tests="6">
+    <testcase classname="schedules should be able to create schedule" name="schedules should be able to create schedule" time="0.072">
+    </testcase>
+    <testcase classname="schedules should be able to cancel schedule" name="schedules should be able to cancel schedule" time="0.013">
+    </testcase>
+    <testcase classname="schedules should be able to block schedule creation in same date time" name="schedules should be able to block schedule creation in same date time" time="0.011">
+    </testcase>
+    <testcase classname="schedules should be able to block schedule creation in past date time" name="schedules should be able to block schedule creation in past date time" time="0.007">
+    </testcase>
+    <testcase classname="schedules should be able to block schedule creation with invalid customer_id" name="schedules should be able to block schedule creation with invalid customer_id" time="0.006">
+    </testcase>
+    <testcase classname="schedules should be able to block schedule creation with invalid service_id" name="schedules should be able to block schedule creation with invalid service_id" time="0.007">
+    </testcase>
+  </testsuite>
+  <testsuite name="customers" errors="0" failures="4" skipped="0" timestamp="2020-05-28T01:56:10" time="2.183" tests="5">
+    <testcase classname="customers should be able to create customer" name="customers should be able to create customer" time="0.049">
+    </testcase>
+    <testcase classname="customers should be able to edit customer" name="customers should be able to edit customer" time="0.011">
+      <failure>Error: expect(received).toBe(expected) // Object.is equality
+
+Expected: 200
+Received: 401
+    at Object.&lt;anonymous&gt; (/home/joao/Desktop/scheduly/server/__tests__/customers.test.js:28:29)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)</failure>
+    </testcase>
+    <testcase classname="customers should be return error when fields are already in use" name="customers should be return error when fields are already in use" time="0.011">
+      <failure>Error: expect(received).toBe(expected) // Object.is equality
+
+Expected: 200
+Received: 401
+    at Object.&lt;anonymous&gt; (/home/joao/Desktop/scheduly/server/__tests__/customers.test.js:37:29)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)</failure>
+    </testcase>
+    <testcase classname="customers should be return error when invalid cpf informated" name="customers should be return error when invalid cpf informated" time="0.006">
+      <failure>Error: expect(received).toBe(expected) // Object.is equality
+
+Expected: 200
+Received: 401
+    at Object.&lt;anonymous&gt; (/home/joao/Desktop/scheduly/server/__tests__/customers.test.js:46:29)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)</failure>
+    </testcase>
+    <testcase classname="customers should be return error when invalid phone informated" name="customers should be return error when invalid phone informated" time="0.005">
+      <failure>Error: expect(received).toBe(expected) // Object.is equality
+
+Expected: 200
+Received: 401
+    at Object.&lt;anonymous&gt; (/home/joao/Desktop/scheduly/server/__tests__/customers.test.js:55:29)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)</failure>
+    </testcase>
+  </testsuite>
+</testsuites>
