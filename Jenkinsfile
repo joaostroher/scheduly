@@ -6,8 +6,8 @@ node {
 		def dockerImage = docker.build("scheduly:${env.BRANCH_NAME.replace("/","-")}")
 
     stage 'Test'
-    withDockerContainer(image: "node:12-alpine", args: "-v ${WORKSPACE}:/app --workdir /app/web") {
-      sh "ls -la"
+    withDockerContainer(image: "node:12-alpine", args: "-v ${WORKSPACE}:/app --workdir /app/server") {
+      sh "npm install"
     }
 
     stage 'Deploy to Staging'
