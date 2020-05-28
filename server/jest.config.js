@@ -106,6 +106,8 @@ module.exports = {
       {
         outputDirectory: '__tests__/coverage/junit/',
         outputName: 'junit.xml',
+        classNameTemplate: '{classname}',
+        titleTemplate: '{title}',
       },
     ],
   ],
