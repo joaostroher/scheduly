@@ -6,7 +6,7 @@ node {
 		def dockerImage = docker.build("scheduly:${env.BRANCH_NAME.replace("/","-")}")
 
     stage 'Test'
-    withDockerContainer(image: "node:12-alpine") {
+    withDockerContainer(image: "node:12") {
       dir("server") {
         sh "yarn"
         sh "yarn test:ci"
