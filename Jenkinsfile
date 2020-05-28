@@ -16,7 +16,8 @@ node {
           publishHTML target: [
             allowMissing         : false,
             alwaysLinkToLastBuild: false,
-            keepAll             : true,
+            keepAll              : true,
+            includes             : '**/*'
             reportDir            : '__tests__/coverage/lcov-report',
             reportFiles          : 'index.html',
             reportName           : 'CodeCoverage'
