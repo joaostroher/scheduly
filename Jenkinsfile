@@ -9,7 +9,20 @@ node {
     withDockerContainer(image: "node:12-alpine") {
       dir("server") {
         sh "yarn"
-        sh "yarn test"
+        sh "yarn test:ci"
+      }
+    }
+    post {
+      always {
+        junit 'server/__tests__/coverage/junit/junit.xml'
+        publishHTML target: [
+            allowMissing         : false,
+            alwaysLinkToLastBuild: false,
+            keepAll             : true,
+            reportDir            : 'server/__tests__/coverage/lcov-report',
+            reportFiles          : 'index.html',
+            reportName           : 'Code Coverage'
+          ]
       }
     }
 
