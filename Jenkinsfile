@@ -9,13 +9,11 @@ node {
     withDockerContainer(image: "node:12") {
       dir("server") {
         sh "yarn"
+        try {
         sh "yarn test:ci"
-      }
-    }
-    post {
-      always {
-        junit 'server/__tests__/coverage/junit/junit.xml'
-        publishHTML target: [
+        } finally {
+          junit 'server/__tests__/coverage/junit/junit.xml'
+          publishHTML target: [
             allowMissing         : false,
             alwaysLinkToLastBuild: false,
             keepAll             : true,
@@ -23,6 +21,7 @@ node {
             reportFiles          : 'index.html',
             reportName           : 'Code Coverage'
           ]
+        }
       }
     }
 
