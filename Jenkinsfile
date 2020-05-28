@@ -6,7 +6,7 @@ node {
 		def dockerImage = docker.build("scheduly:${env.BRANCH_NAME.replace("/","-")}")
 
     stage 'Test'
-    withDockerContainer(image: "node:12-alpine", args: "-v ./:/app -w /app/server") {
+    withDockerContainer(image: "node:12-alpine", args: "-v ${WORKSPACE}:/app -w /app/server") {
       sh "ls -la"
     }
 
