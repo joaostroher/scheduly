@@ -19,7 +19,7 @@ node {
             keepAll             : true,
             reportDir            : '__tests__/coverage/lcov-report',
             reportFiles          : 'index.html',
-            reportName           : 'Code Coverage'
+            reportName           : 'CodeCoverage'
           ]
         }
       }
