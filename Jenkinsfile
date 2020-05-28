@@ -12,12 +12,12 @@ node {
         try {
         sh "yarn test:ci"
         } finally {
-          junit 'server/__tests__/coverage/junit/junit.xml'
+          junit '__tests__/coverage/junit/junit.xml'
           publishHTML target: [
             allowMissing         : false,
             alwaysLinkToLastBuild: false,
             keepAll             : true,
-            reportDir            : 'server/__tests__/coverage/lcov-report',
+            reportDir            : '__tests__/coverage/lcov-report',
             reportFiles          : 'index.html',
             reportName           : 'Code Coverage'
           ]
