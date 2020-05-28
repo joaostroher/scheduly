@@ -17,7 +17,7 @@ node {
             allowMissing         : false,
             alwaysLinkToLastBuild: false,
             keepAll              : true,
-            includes             : '**/*'
+            includes             : '**/*',
             reportDir            : '__tests__/coverage/lcov-report',
             reportFiles          : 'index.html',
             reportName           : 'CodeCoverage'
