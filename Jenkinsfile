@@ -7,9 +7,10 @@ node {
 
     stage 'Test'
     withDockerContainer(image: "node:12-alpine") {
-      sh "cd server"
-      sh "yarn"
-      sh "yarn test"
+      dir("server") {
+        sh "yarn"
+        sh "yarn test"
+      }
     }
 
     stage 'Deploy to Staging'
