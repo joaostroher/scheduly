@@ -7,7 +7,7 @@ node {
 
     stage 'Test'
     withDockerContainer(image: "node:12-alpine") {
-      sh "ls -la"
+      sh "cd server && npm install"
     }
 
     stage 'Deploy to Staging'
