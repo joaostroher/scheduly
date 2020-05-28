@@ -13,13 +13,7 @@ node {
     stage 'Deploy to Staging'
     sh 'docker service update --force devops_stag'
 
-    stage 'Deploy to Staging'
-    def deployToProduction = input(
-        id: 'DeployToProduction', message: 'Deploy em produção?', parameters: [
-        [$class: 'BooleanParameterDefinition', defaultValue: false, description: '', name: 'Please confirm you agree with this']
-        ]);
-
-    if (deployToProduction) {
-      sh 'docker service update --force devops_prod'
-    }
+    stage 'Deploy to Production'
+    input "Deseja efetur deploy para produção?"
+    sh 'docker service update --force devops_prod'
 }
