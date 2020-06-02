@@ -7,7 +7,6 @@ const ServiceSchema = new Schema({
   },
   time: {
     type: Number,
-    required: true,
   },
 });
 

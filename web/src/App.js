@@ -1,21 +1,19 @@
 import React from 'react';
+import { ToastContainer } from 'react-toastify';
 import { BrowserRouter } from 'react-router-dom';
-import { ThemeProvider } from 'styled-components';
 
 import './configs/ReactotrongConfig';
 
-import theme from '~/theme';
-import Routes from '~/routes';
+import GlobalStyle from './styles/Global';
 
-import GlobalStyle from './styles/global';
+import Routes from '~/routes';
 
 function App() {
   return (
     <BrowserRouter>
       <GlobalStyle />
-      <ThemeProvider theme={theme}>
-        <Routes />
-      </ThemeProvider>
+      <Routes />
+      <ToastContainer autoClose={3000} />
     </BrowserRouter>
   );
 }

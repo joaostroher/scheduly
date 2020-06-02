@@ -1,6 +1,9 @@
 import { createGlobalStyle } from 'styled-components';
 import backgroundImage from '../assets/background.jpg';
 
+import 'react-toastify/dist/ReactToastify.css';
+import 'react-datepicker/dist/react-datepicker.css';
+
 export default createGlobalStyle`
   @import url('https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap');
 
@@ -29,11 +32,41 @@ export default createGlobalStyle`
     font: 14px 'Roboto', sans-serif;
   }
 
+  input {
+    background: #e2e2e2ff;
+    color: #111;
+    border: 0;
+    border-bottom: 1px solid #eee;
+    border-radius: 3px;
+
+    &::placeholder {
+      color: #333;
+    }
+  }
+
+  button {
+    cursor: pointer;
+    border: 0;
+  }
+
+  label {
+    color: #fff;
+  }
+
   a {
     text-decoration: none;
   }
 
   ul {
     list-style: none;
+  }
+
+  strong {
+    cursor: default;
+  }
+
+  select {
+    background: #e2e2e2ff;
+    border-radius: 3px;
   }
 `;
