@@ -4,7 +4,7 @@ import { BrowserRouter } from 'react-router-dom';
 
 import './configs/ReactotrongConfig';
 
-import GlobalStyle from './styles/Global';
+import GlobalStyle from './styles/global';
 
 import Routes from '~/routes';
 
