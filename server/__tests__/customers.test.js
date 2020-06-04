@@ -14,45 +14,41 @@ describe('customers', () => {
       .post('/api/customers')
       .send({
         name: faker.name.findName(),
+        email: faker.internet.email(),
       });
 
     expect(response.status).toBe(200);
-    // expect(response.body.status).toEqual('created customer');
   });
 
   test('should be able to edit customer', async () => {
     const customer = await seeds.createCustomer();
     const response = await request(app)
       .put(`/api/customers/${customer.id}`)
-      .send({ ...customer, name: faker.name.findName() });
+      .send({ name: faker.name.findName() });
     expect(response.status).toBe(200);
-    // expect(response.body.status).toEqual('edited customer');
-  });
-
-  test('should be return error when fields are already in use', async () => {
-    const customer = await seeds.createCustomer();
-    const response = await request(app)
-      .post('/api/customers')
-      .send(customer);
-    expect(response.status).toBe(200);
-    // expect(response.body.status).toEqual('edited customer');
   });
 
   test('should be return error when invalid cpf informated', async () => {
-    const customer = await seeds.createCustomer();
     const response = await request(app)
-      .put(`/api/customers/${customer.id}`)
-      .send({ ...customer, cpf: faker.br.cpf() });
-    expect(response.status).toBe(200);
-    // expect(response.body.status).toEqual('edited customer');
+      .post('/api/customers')
+      .send({
+        name: faker.name.findName(),
+        email: faker.internet.email(),
+        cpf: '111',
+      });
+
+    expect(response.status).toBe(400);
   });
 
   test('should be return error when invalid phone informated', async () => {
-    const customer = await seeds.createCustomer();
     const response = await request(app)
-      .put(`/api/customers/${customer.id}`)
-      .send({ ...customer, phone: faker.phone.phoneNumber() });
-    expect(response.status).toBe(200);
-    // expect(response.body.status).toEqual('edited customer');
+      .post('/api/customers')
+      .send({
+        name: faker.name.findName(),
+        email: faker.internet.email(),
+        phone: '111',
+      });
+
+    expect(response.status).toBe(400);
   });
 });

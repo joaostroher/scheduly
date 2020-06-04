@@ -17,7 +17,6 @@ export default {
     return Customer.create({
       name: faker.name.findName(),
       email: faker.internet.email(),
-      password: faker.internet.password(),
       ...override,
     });
   },
