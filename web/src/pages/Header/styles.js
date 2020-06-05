@@ -2,9 +2,9 @@ import styled from 'styled-components';
 
 export const Container = styled.div`
   position: fixed;
-  background: rgba(164, 164, 164, 0.9); /* opacity: 0.9*/
+  background: rgba(0, 0, 0, 0.5); /* opacity: 0.9*/
   width: 100%;
-  height: 34px;
+  height: 60px;
   display: flex;
   text-align: center;
   top: 0;
@@ -12,11 +12,21 @@ export const Container = styled.div`
 
   .link {
     display: block;
-    margin: 6px;
+    margin: 20px;
     padding: 0 4px;
-    background: #fff;
-    color: #111;
+    //background: #fff;
+    color: rgba(255,255,255);
+    //color: #111;
+    font-size: 18px;
+    font-weight: bold;
+    font-family: arial, sans-serif;
+    transition: color 0.3s;
     text-align: center;
     cursor: pointer;
+
+    &:hover {
+      color: rgba(150,150,150);
+    }
   }
+  
 `;

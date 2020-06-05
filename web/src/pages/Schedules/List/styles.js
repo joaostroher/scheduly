@@ -4,15 +4,15 @@ export const SchedulesDiv = styled.div`
   display: flex;
   flex-direction: column;
 
-  .divBtnsOptions {
+  .divBtnsOptionsOLD {
     padding: 10px;
 
     button[type='submit'] {
       padding: 4px;
       border-radius: 2px;
-      font-size: 14px;
+      font-size: 20px;
       font-weight: bold;
-      transition: background 0.5s;
+      transition: background 0.3s;
       background: #edededff;
       color: #333;
 
@@ -22,24 +22,42 @@ export const SchedulesDiv = styled.div`
     }
   }
 
+  .divBtnsOptions {
+    margin: 0 auto;
+    padding: 10px;
+
+    button[type='submit'] {
+      padding: 0 20px;
+      border-radius: 2px;
+      font-size: 16px;
+      width: 250px;
+      height: 38px;
+      font-weight: bold;
+      transition: background 0.5s;
+      background: rgb(164,124,63);
+      color: #ffffff;
+      
+      &:hover {
+        background: rgb(104,64,3);
+      }
+    }
+  }
+
   .divNavDates {
-    background: rgba(80, 80, 80, 0.9);
+    background: rgba(50, 50, 50, 0.9);
     display: flex;
     margin: auto;
-    width: 200px;
-    height: 30px;
-    margin-top: 14px;
+    width: 250px;
+    height: 50px;
+    margin-top: 30px;
     justify-content: center;
     align-items: center;
     border-radius: 5px;
-
-    * {
-      cursor: pointer;
-    }
+    cursor: pointer;
 
     strong {
-      margin-left: 10px;
-      margin-right: 10px;
+      margin-left: 15px;
+      margin-right: 15px;
       font-size: 20px;
       text-align: center;
       color: #fff;

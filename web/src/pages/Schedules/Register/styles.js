@@ -2,38 +2,46 @@ import styled from 'styled-components';
 
 export const SingScheduleDiv = styled.div`
   width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   max-width: 400px;
-  background: rgba(80, 80, 80, 0.9);
+  background: rgba(255, 255, 255);
+  border-radius: 7px;
   padding: 4px;
-  margin-left: 30px;
-  margin-top: 30px;
+  margin: 80px auto 0;
 
   strong {
-    color: #fff;
-    font-size: 16px;
-    margin: 8px;
+    color: rgba(0, 0, 0);
+    font-family: 'Roboto', Arial, Helvetica, sans-serif;
+    font-size: 25px;
+    margin: 15px;
   }
 
   * {
-    font-size: 14px;
 
     label {
-      color: #fff;
-      margin: 0 8px;
+      color: rgba(0, 0, 0);
+      margin: 0 auto;
       text-align: right;
+      font-size: 18px;
     }
 
     input {
-      color: #333;
-      height: 22px;
+      margin: 0 auto;
+      color: rgba(0, 0, 0);
+      height: 30px;
       padding: 0 8px;
-      text-align: left;
+      text-align: center;
+      font-size: 16px;
     }
 
     select {
-      max-width: 200px;
-      height: 22px;
-      padding: 0 2px;
+      margin: 0 auto;
+      width: 200px;
+      height: 28px;
+      padding: 0 8px;
+      font-size: 18px;
     }
   }
 
@@ -41,7 +49,7 @@ export const SingScheduleDiv = styled.div`
   .divProvider,
   .divService,
   .divClient {
-    margin: 4px;
+    margin: 4px auto;
     display: flex;
     align-items: center;
 
@@ -51,48 +59,57 @@ export const SingScheduleDiv = styled.div`
   }
 
   .divSingOptions {
-    width: 100%;
-    max-width: 400px;
-    margin: 10px 0;
+    width: 90%;
+    max-width: 100%;
+    margin: 16px auto;
+    border-radius: 5px;
 
     .btnSave {
-      background: #00c4c4;
+      background: rgb(164,124,63);
+      margin: 0 10px;
       &:hover {
-        background: #009191;
+        background: rgb(124,84,23);
       }
     }
 
     .btnCancel {
-      background: #ff6458ff;
+      background: rgba(230,76,60);
+      margin: 0 10px;
+      &:hover {
+        background: rgba(190,36,20);
+      }
     }
 
     button[type='submit'] {
-      margin: 0 4px;
-      height: 20px;
-      padding: 2px;
       border-radius: 2px;
-      transition: background 0.5s;
-      color: #fff;
+      font-size: 16px;
+      width: 200px;
+      height: 38px;
+      font-weight: bold;
+      transition: background 0.3s;
+      color: #ffffff;
     }
   }
 
   .divDateTime {
-    margin: 4px;
     display: flex;
+    flex-direction: column;
+    align-items: center;
 
     .divDate,
     .divTime {
-      display: flex;
+      margin 0 auto;
+      display: block;
       align-items: center;
     }
 
     .divDate {
-      label:first-child {
-        width: 60px;
-      }
-
       input {
-        width: 114px;
+
+        width: 300px;
+        margin: 0px 10px;
+        background: rgba(255,255,255);
+        border: 1px solid rgba(0,0,0);
       }
 
       .calenday {
@@ -102,18 +119,25 @@ export const SingScheduleDiv = styled.div`
 
     .divTime {
       input {
-        width: 70px;
+        width: 300px;
+        margin: 10px 10px;
+        background: rgba(255,255,255);
+        border: 1px solid rgba(0,0,0);
       }
     }
   }
 
   .divProvider,
   .divClient {
-    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 
     input {
-      width: 200px;
-      padding-right: 22px;
+      width: 300px;
+      margin: 0px 10px;
+      background: rgba(255,255,255);
+      border: 1px solid rgba(0,0,0);
     }
 
     svg {
@@ -124,9 +148,15 @@ export const SingScheduleDiv = styled.div`
       border-radius: 50%;
 
       &:hover {
-        background: #505050ff;
+        background: rgba(255,255,255);
         color: #fff;
+        
       }
     }
   }
+
+
+
+
+
 `;

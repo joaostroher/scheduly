@@ -94,7 +94,7 @@ export default function SchedulesRegister() {
 
   return (
     <SingScheduleDiv>
-      <strong>Agendamento</strong>
+      <strong>Agendar Serviço</strong>
 
       <div className="divDateTime">
         <div className="divDate">
