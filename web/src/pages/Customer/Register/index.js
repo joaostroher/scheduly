@@ -31,7 +31,6 @@ export default function CustomerRegister() {
         setCustomer(resCustomer.data);
       } catch (error) {
         toast.error('Falha ao salvar o Perfil');
-        console.tron.log(error);
       }
     }
 

@@ -53,7 +53,6 @@ export default function Services() {
         return mapService;
       })
     );
-    console.tron.log(service);
     setActService(service);
   }
 

@@ -27,9 +27,9 @@ node {
     }
 
     stage 'Deploy to Staging'
-    sh 'docker service update --force devops_stag'
+    sh 'docker service update --force scheduly_stag'
 
     stage 'Deploy to Production'
     input "Deseja efetur deploy para produção?"
-    sh 'docker service update --force devops_prod'
+    sh 'docker service update --force scheduly_prod'
 }

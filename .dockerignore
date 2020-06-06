@@ -1,2 +1,11 @@
 server/node_modules
+server/.env.*
+server/__tests__/coverage
+
 web/node_modules
+web/build
+web/.env.*
+web/*.log
+
+
+
