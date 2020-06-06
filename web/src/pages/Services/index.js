@@ -1,62 +1,128 @@
-import React, { useState } from 'react';
-import { ServicesStyles } from './styles';
-import { Link } from 'react-router-dom';
-
-async function handleSubmit(){
-}
+/* eslint-disable jsx-a11y/label-has-associated-control */
+import React, { useState, useEffect } from 'react';
+import { MdAddCircle } from 'react-icons/md';
+import { toast } from 'react-toastify';
+import NumberFormat from 'react-number-format';
+import api from '../../services/api';
+import { ServicesDiv, ServiceSelectLi } from './styles';
 
 export default function Services() {
-  const [email, setEmail] = useState('');
-  const [date, setDate] = useState('');
+  const [services, setServices] = useState([]);
+  const [newService, setNewService] = useState('');
+  const [actService, setActService] = useState({});
+
+  useEffect(() => {
+    async function loadServices() {
+      try {
+        setServices((await api.get('services')).data);
+      } catch (error) {
+        toast.error('Falha ao carregar os Serviços');
+      }
+    }
+    loadServices();
+  }, []);
+
+  function handleAddService() {
+    async function addService() {
+      try {
+        setServices([
+          ...services,
+          (await api.post('services', { name: newService })).data,
+        ]);
+        setNewService('');
+        toast.success('Serviço adicionado');
+      } catch (error) {
+        toast.error('Falha ao adicionar o Serviço');
+      }
+    }
+    addService();
+  }
+
+  function handleInputChange(e) {
+    // setActService({ ...actService, [e.target.name]: e.target.value, changed: true });
+  }
+
+  function handleNumericInputChange(name, value) {
+    setActService({ ...actService, [name]: value.floatValue, changed: true });
+  }
+
+  function handleChangeSelect(service) {
+    setServices(
+      services.map(mapService => {
+        if (mapService._id === actService._id) return actService;
+        return mapService;
+      })
+    );
+    console.tron.log(service);
+    setActService(service);
+  }
+
+  function handleSave(e) {
+    e.preventDefault();
+
+    const servicesToSave = services.map(mapService => {
+      if (mapService._id === actService._id) return actService;
+      return mapService;
+    });
+
+    async function saveService(service) {
+      if (service._id) {
+        await api.put(`services/${service._id}`, service);
+      } else {
+        await api.post('services', service);
+      }
+    }
+
+    try {
+      servicesToSave.forEach(service => {
+        if (service.changed) saveService(service);
+      });
+      toast.success('Serviços salvos');
+    } catch (error) {
+      toast.error('Falha ao salvar os Serviços');
+    }
+  }
 
   return (
-    <ServicesStyles>
-    <div className = "container">
-    <div className = "content">
-    <p>
-      <strong>Agendar Serviço</strong>
-    </p>
-    <form onSubmit={handleSubmit}>
-      <label>SERVIÇO</label>
-      <select>
-        <option>CORTE DE CABELO R$30,00/30min</option>
-        <option>BARBA R$27,00/30min</option>
-        <option>CABELO + BARBA R$57,00/30min</option>
-        <option>BARBOTERAPIA R$35,00/30min</option>
-        <option>BARBOTERAPIA + CABELO R$65,00/60min</option>
-        <option>CORTE MÁQUINA R$20,00/30min</option>
-      </select>
-      <label>ESCOLHA UM DIA</label>
-      <input 
-        id="date" 
-        type="date" 
-        value={date}
-        onChange={event => setDate(event.target.value)}
-      />
-      <label>ESCOLHA UM HORÁRIO</label>
-      <select>
-        <option>08:00</option>
-        <option>08:30</option>
-        <option>09:00</option>
-        <option>09:30</option>
-        <option>10:00</option>
-        <option>10:30</option>
-        <option>11:00</option>
-        <option>11:30</option>
-        <option>13:30</option>
-        <option>14:00</option>
-        <option>14:30</option>
-        <option>15:00</option>
-        <option>15:30</option>
-        <option>16:00</option>
-        <option>16:30</option>
-        <option>17:00</option>
-        <option>17:30</option>
-      </select>
-      <button className="btn" type="submit">Agendar</button>
-    </form>
-    </div>
-    </div>
-    </ServicesStyles>
-);
+    <ServicesDiv>
+      <strong>Serviços</strong>
+
+      <div className="addService">
+        <input
+          type="text"
+          onChange={e => setNewService(e.target.value)}
+          value={newService}
+        />
+        <MdAddCircle onClick={handleAddService} />
+      </div>
+
+      <ul>
+        {services.map(service => (
+          <ServiceSelectLi
+            key={service._id}
+            selected={service._id === actService._id}
+            onClick={() => handleChangeSelect(service)}
+          >
+            {service.name}
+          </ServiceSelectLi>
+        ))}
+      </ul>
+      <div className="divInput">
+        <label htmlFor="time">Tempo</label>
+        <NumberFormat
+          name="time"
+          id="time"
+          // disabled={!actService.active}
+          onValueChange={value => handleNumericInputChange('time', value)}
+          value={actService.time || ''}
+          suffix=" min"
+          allowNegative={false}
+        />
+      </div>
+
+      <button type="submit" onClick={handleSave}>
+        Salvar
+      </button>
+    </ServicesDiv>
+  );
 }

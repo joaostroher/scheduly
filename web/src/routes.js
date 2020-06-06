@@ -1,21 +1,38 @@
 import React from 'react';
-import { Routes as BrowserRoutes, Route } from 'react-router-dom';
+import { Switch, Route, Redirect } from 'react-router-dom';
 
-import Home from '~/pages/Home';
-import Register from './pages/Customer';
-import Client from './pages/Client';
+import CustomersList from './pages/Customer/List';
+import CustomerRegister from './pages/Customer/Register';
 import Services from './pages/Services';
-import Barber from './pages/Barber';
-
+import SchedulesList from './pages/Schedules/List';
+import SchedulesRegister from './pages/Schedules/Register';
+import Header from './pages/Header';
+import { ContentDiv } from './styles/Content';
 
 export default function Routes() {
   return (
-    <BrowserRoutes>
-      <Route path="/" element={<Home />} />
-      <Route path="/register" exact element={<Register />} />
-      <Route path="/client" exact element={<Client />} />
-      <Route path="/services" exact element={<Services />} />
-      <Route path="/barber" exact element={<Barber />} />
-    </BrowserRoutes>
+    <Route>
+      <>
+        <ContentDiv>
+          <Switch>
+            <Route exact path="/schedules" component={SchedulesList} />
+            <Route
+              exact
+              path="/schedules/register"
+              component={SchedulesRegister}
+            />
+            <Route exact path="/customers" component={CustomersList} />
+            <Route
+              exact
+              path="/customers/register"
+              component={CustomerRegister}
+            />
+            <Route exact path="/services" component={Services} />
+            <Redirect to={{ pathname: '/schedules' }} />
+          </Switch>
+        </ContentDiv>
+        <Header />
+      </>
+    </Route>
   );
 }
