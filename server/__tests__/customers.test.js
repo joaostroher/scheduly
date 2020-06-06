@@ -19,7 +19,7 @@ describe('customers', () => {
 
     expect(response.status).toBe(200);
   });
-  /*
+
   test('should be able to edit customer', async () => {
     const customer = await seeds.createCustomer();
     const response = await request(app)
@@ -51,5 +51,4 @@ describe('customers', () => {
 
     expect(response.status).toBe(400);
   });
-  */
 });
