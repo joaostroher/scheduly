@@ -105,7 +105,6 @@ export const SingScheduleDiv = styled.div`
 
     .divDate {
       input {
-
         width: 300px;
         margin: 0px 10px;
         background: rgba(255,255,255);
@@ -127,14 +126,18 @@ export const SingScheduleDiv = styled.div`
     }
   }
 
+  .divWork,
   .divProvider,
   .divClient {
+    margin: 0 auto;
+    padding: 7px 0px;
+    width: 400px;
     display: flex;
-    flex-direction: column;
+    flex-direction: block;
     align-items: center;
 
     input {
-      width: 300px;
+      width: 350px;
       margin: 0px 10px;
       background: rgba(255,255,255);
       border: 1px solid rgba(0,0,0);
@@ -155,7 +158,9 @@ export const SingScheduleDiv = styled.div`
     }
   }
 
-
+  .inputService {
+    width: 550px;
+  }
 
 
 
