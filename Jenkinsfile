@@ -27,9 +27,11 @@ node {
     }
 
     stage 'Deploy to Staging'
+    sh "docker tag scheduly:${env.BRANCH_NAME.replace("/","-")} scheduly:stag"
     sh 'docker service update --force scheduly_stag'
 
     stage 'Deploy to Production'
     input "Deseja efetur deploy para produção?"
+    sh "docker tag scheduly:${env.BRANCH_NAME.replace("/","-")} scheduly:latest"
     sh 'docker service update --force scheduly_prod'
 }
