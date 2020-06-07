@@ -31,9 +31,11 @@ function CustomersList() {
 
   return (
     <Container>
-      <button type="submit" onClick={() => handleEditCustomer({})}>
-        Cadastrar novo
-      </button>
+      <div className="divBtnsOptions">
+        <button type="submit" onClick={() => handleEditCustomer({})}>
+          Cadastrar novo
+        </button>
+      </div>
       <ul>
         {customers.map(customer => (
           <div
