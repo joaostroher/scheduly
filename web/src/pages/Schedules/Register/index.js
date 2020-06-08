@@ -49,12 +49,9 @@ export default function SchedulesRegister() {
           actSchedule.customer_id =
             schedule.customer_id || loadedClients.data[0]._id;
         }
-      } catch (error) {
-        console.tron.log(error);
-      }
+      } catch (error) {}
     }
     loadClients();
-    console.tron.log(actSchedule);
     setSchedule(actSchedule);
   }, []);
 
@@ -85,7 +82,6 @@ export default function SchedulesRegister() {
         }
         if (!schedule._id) history.push('/');
       } catch (error) {
-        console.tron.log(error.response);
         toast.error('Falha ao salvar o agendamento');
       }
     }

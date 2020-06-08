@@ -1,7 +1,7 @@
 import 'dotenv/config';
 import express from 'express';
 import 'express-async-errors';
-// import path from 'path';
+import path from 'path';
 import Youch from 'youch';
 import cors from 'cors';
 import { ValidationError } from 'yup';
@@ -25,12 +25,13 @@ class App {
 
   routes() {
     this.server.use('/api', routes);
-    /*
-    this.server.use(express.static(path.resolve(__dirname, '..', 'public')));
-    this.server.get('*', (req, res) =>
-      res.sendFile(path.resolve(__dirname, '..', 'public', 'index.html'))
-    );
-    */
+    if (process.env.NODE_ENV === 'production') {
+      console.log(__dirname);
+      this.server.use(express.static(path.resolve(__dirname, '..', 'public')));
+      this.server.get('/*', (req, res) =>
+        res.sendFile(path.resolve(__dirname, '..', 'public', 'index.html'))
+      );
+    }
   }
 
   exceptionHandler() {
