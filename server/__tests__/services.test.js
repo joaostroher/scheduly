@@ -24,7 +24,7 @@ describe('services', () => {
     const service = await seeds.createService();
     const response = await request(app)
       .put(`/api/services/${service.id}`)
-      .send({ name: faker.name.findName(), time: faker.random.number(120)});
+      .send({ name: faker.name.findName(), time: faker.random.number(120) });
     expect(response.status).toBe(200);
   });
 });
