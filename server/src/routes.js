@@ -17,6 +17,7 @@ routes.delete('/schedules/:scheduleId', ScheduleController.destroy);
 
 routes.get('/services', ServicesController.index);
 routes.post('/services', ServicesController.post);
+routes.post('/services', ServicesController.post);
 routes.put('/services/:id', ServicesController.put);
 routes.delete('/services/:id', ServicesController.destroy);
 

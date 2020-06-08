@@ -4,6 +4,8 @@ import React, { useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { Container } from './styles';
+import { CustomersDiv } from './styles';
+import { CustomersLi } from './styles';
 import api from '~/services/api';
 import { setCustomerLS } from '~/local/customer';
 
@@ -31,19 +33,27 @@ function CustomersList() {
 
   return (
     <Container>
-      <button type="submit" onClick={() => handleEditCustomer({})}>
-        Cadastrar novo
-      </button>
-      <ul>
-        {customers.map(customer => (
-          <div
-            className="customerDiv"
-            onClick={() => handleEditCustomer(customer)}
-          >
-            <span>{customer.name}</span>
-          </div>
-        ))}
-      </ul>
+      <div className="divBtnsOptions">
+        <button type="submit" onClick={() => handleEditCustomer({})}>
+          Cadastrar novo
+        </button>
+      </div>
+
+      <div className="divSelList">
+        <CustomersDiv>
+          <ul>
+            {customers.map(customer => (
+              <CustomersLi
+                onClick={() => handleEditCustomer(customer)}
+              >
+                <div className="divShowService">
+                  <strong className="spanService">{customer.name}</strong>
+                </div>
+              </CustomersLi>
+            ))}
+          </ul>
+        </CustomersDiv>
+      </div>
     </Container>
   );
 }
