@@ -6,7 +6,11 @@ import Service from '~/app/models/Service';
 
 class ScheduleController {
   async index(req, res) {
-    const schedules = await Schedule.find().sort({ date_time_start: 1 });
+    const schedules = await Schedule.find()
+      .sort({ date_time_start: 1 })
+      .populate(['customer_id', 'service_id'])
+      .exec();
+
     return res.status(200).json(schedules);
   }
 

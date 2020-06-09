@@ -94,8 +94,12 @@ export default function SchedulesList() {
                   <strong>{schedule.time}</strong>
                 </div>
                 <div className="divShowService">
-                  <strong className="spanClient">{schedule.customer_id}</strong>
-                  <span className="spanService">{schedule.service_id}</span>
+                  <strong className="spanClient">
+                    {schedule.customer_id.name}
+                  </strong>
+                  <span className="spanService">
+                    {schedule.service_id.name}
+                  </span>
                 </div>
               </ScheduledsLi>
             ))}
