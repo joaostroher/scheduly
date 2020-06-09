@@ -24,7 +24,10 @@ describe('customers', () => {
     const customer = await seeds.createCustomer();
     const response = await request(app)
       .put(`/api/customers/${customer.id}`)
-      .send({ name: faker.name.findName() });
+      .send({
+        name: faker.name.findName(),
+        email: faker.internet.email(),
+      });
     expect(response.status).toBe(200);
   });
 

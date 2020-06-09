@@ -4,8 +4,10 @@ import { toast } from 'react-toastify';
 import { Container } from './styles';
 import api from '~/services/api';
 import { getCustomerLS, setCustomerLS } from '~/local/customer';
+import { useHistory } from 'react-router-dom';
 
 export default function CustomerRegister() {
+  const history = useHistory();
   const [customer, setCustomer] = useState(getCustomerLS() || {});
 
   useEffect(() => {
@@ -17,16 +19,19 @@ export default function CustomerRegister() {
 
     async function saveCustomer() {
       try {
+        console.log(customer);
         let resCustomer;
         if (customer._id) {
-          resCustomer = await api.put('customers', customer);
+          resCustomer = await api.put(`customers/${customer._id}`, customer);
           toast.success('Usuário salvo');
+          history.push('/customers');
         } else {
           resCustomer = await api.post('customers', {
             ...customer,
             newPassword: customer.password,
           });
           toast.success('Usuário criado');
+          history.push('/customers');
         }
         setCustomer(resCustomer.data);
       } catch (error) {
@@ -79,7 +84,7 @@ export default function CustomerRegister() {
           />
         </div>
 
-        <div className="divInput">
+        {/*<div className="divInput">
           <label htmlFor="cnpj">CNPJ</label>
           <InputMask
             name="cnpj"
@@ -89,6 +94,7 @@ export default function CustomerRegister() {
             onChange={handleInputChange}
           />
         </div>
+  */}
 
         <div className="divInput">
           <label htmlFor="phone">Telefone</label>

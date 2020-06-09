@@ -7,8 +7,8 @@ const CustomerSchema = new Schema({
   },
   cpf: {
     type: String,
-    minlength: 11,
-    maxlength: 11,
+    minlength: 14,
+    maxlength: 14,
     unique: true,
     sparse: true,
   },
@@ -19,8 +19,8 @@ const CustomerSchema = new Schema({
   },
   phone: {
     type: String,
-    minlength: 10,
-    maxlength: 11,
+    minlength: 14,
+    maxlength: 15,
     unique: true,
     sparse: true,
   },

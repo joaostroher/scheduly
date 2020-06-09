@@ -1,6 +1,24 @@
 import * as Yup from 'yup';
 import Customer from '~/app/models/Customer';
 
+const schema = Yup.object().shape({
+  name: Yup.string()
+    .label('Nome')
+    .required(),
+  cpf: Yup.string().test('cpf', 'CPF inválido!', value => {
+    if (!value) return true;
+    return /\d{3}.\d{3}.\d{3}-\d{2}/.test(value);
+  }),
+  email: Yup.string()
+    .label('Email')
+    .required()
+    .email(),
+  phone: Yup.string().test('phone', 'Telefone inválido!', value => {
+    if (!value) return true;
+    return /\(\d{2}\) \d{5}-\d{3,4}/.test(value);
+  }),
+});
+
 class CustomerController {
   async index(req, res) {
     const customers = await Customer.find();
@@ -9,26 +27,6 @@ class CustomerController {
   }
 
   async post(req, res) {
-    const schema = Yup.object().shape({
-      name: Yup.string().required(),
-      cpf: Yup.string()
-        .notRequired()
-        .test('cpf', 'invalid cpf', value => {
-          if (!value) return true;
-          return value.length === 11;
-        })
-        .max(11),
-      email: Yup.string()
-        .email()
-        .required(),
-      phone: Yup.string()
-        .notRequired()
-        .test('phone', 'invalid phone', value => {
-          if (!value) return true;
-          return value.length >= 11;
-        }),
-    });
-
     await schema.validate(req.body, { abortEarly: false });
 
     const customer = await Customer.create(req.body);
@@ -42,6 +40,8 @@ class CustomerController {
     if (!customer) {
       return res.status(404).json({ error: 'customer not found' });
     }
+
+    await schema.validate(req.body, { abortEarly: false });
 
     await customer.update(req.body);
 
