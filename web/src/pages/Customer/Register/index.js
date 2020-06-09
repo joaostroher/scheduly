@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import InputMask from 'react-input-mask';
 import { toast } from 'react-toastify';
+import { useHistory } from 'react-router-dom';
 import { Container } from './styles';
 import api from '~/services/api';
 import { getCustomerLS, setCustomerLS } from '~/local/customer';
-import { useHistory } from 'react-router-dom';
 
 export default function CustomerRegister() {
   const history = useHistory();
@@ -19,23 +19,22 @@ export default function CustomerRegister() {
 
     async function saveCustomer() {
       try {
-        console.log(customer);
         let resCustomer;
         if (customer._id) {
           resCustomer = await api.put(`customers/${customer._id}`, customer);
-          toast.success('Usuário salvo');
+          toast.success('Cliente salvo');
           history.push('/customers');
         } else {
           resCustomer = await api.post('customers', {
             ...customer,
             newPassword: customer.password,
           });
-          toast.success('Usuário criado');
+          toast.success('Cliente criado');
           history.push('/customers');
         }
         setCustomer(resCustomer.data);
       } catch (error) {
-        toast.error('Falha ao salvar o Perfil');
+        toast.error('Falha ao salvar/cadastrar o Cliente');
       }
     }
 
@@ -84,7 +83,7 @@ export default function CustomerRegister() {
           />
         </div>
 
-        {/*<div className="divInput">
+        {/* <div className="divInput">
           <label htmlFor="cnpj">CNPJ</label>
           <InputMask
             name="cnpj"
