@@ -35,7 +35,7 @@ class CustomerController {
   }
 
   async put(req, res) {
-    const customer = await Customer.findById(req.params.id);
+    const customer = await Customer.findOne({ _id: req.params.id });
 
     if (!customer) {
       return res.status(404).json({ error: 'customer not found' });

@@ -20,7 +20,7 @@ class ServiceController {
   }
 
   async put(req, res) {
-    const service = await Service.findById(req.params.id);
+    const service = await Service.findOne({ _id: req.params.id });
 
     if (!service) {
       return res.status(401).json({ error: 'service not found' });

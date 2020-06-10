@@ -3,11 +3,14 @@ import faker from 'faker-br';
 import app from '~/app';
 import clearDatabase from './utils/clearDatabase';
 import seeds from './utils/seeds';
+import runAsync from './utils/runAsync';
 
 describe('services', () => {
-  beforeEach(async () => {
-    await clearDatabase();
-  });
+  beforeEach(
+    runAsync(async () => {
+      await clearDatabase();
+    })
+  );
 
   test('should be able to create service', async () => {
     const response = await request(app)
