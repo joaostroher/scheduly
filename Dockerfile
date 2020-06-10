@@ -7,9 +7,9 @@ COPY server/package.json server/yarn.lock ./server/
 
 #Yarn
 WORKDIR /app/web
-RUN yarn --production
+RUN yarn --production --network-timeout 100000
 WORKDIR /app/server
-RUN yarn
+RUN yarn --network-timeout 100000
 
 #Build web
 WORKDIR /app/server
