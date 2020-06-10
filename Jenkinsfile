@@ -8,7 +8,7 @@ node {
     stage 'Test'
     withDockerContainer(image: "node:12") {
       dir("server") {
-        sh "yarn"
+        sh "yarn --network-timeout 100000"
         try {
         sh "yarn test:ci"
         } finally {
