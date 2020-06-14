@@ -14,6 +14,7 @@ RUN yarn --network-timeout 100000
 #Build web
 WORKDIR /app/server
 COPY server/ ./
+RUN chmod +x start.sh
 WORKDIR /app/web
 COPY web/ ./
 RUN yarn build && rm -Rf node_modules && rm -Rf src
