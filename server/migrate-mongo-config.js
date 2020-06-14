@@ -1,8 +1,7 @@
 require('dotenv/config');
 
-const mongoUrl = process.env.MONGO_URL;
-const url = mongoUrl.substring(0, mongoUrl.lastIndexOf('/'));
-const databaseName = mongoUrl.substring(mongoUrl.lastIndexOf('/') + 1);
+const url = process.env.MONGO_URL;
+const databaseName = url.substring(url.lastIndexOf('/') + 1);
 
 module.exports = {
   mongodb: {
