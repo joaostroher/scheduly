@@ -4,6 +4,7 @@ const ServiceSchema = new Schema({
   name: {
     type: String,
     required: true,
+    unique: true,
   },
   time: {
     type: Number,
