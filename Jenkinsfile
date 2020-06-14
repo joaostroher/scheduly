@@ -2,9 +2,6 @@ node {
     stage 'Checkout Repository'
     checkout scm
 
-    stage 'Build'
-		def dockerImage = docker.build("scheduly:${env.BRANCH_NAME.replace("/","-")}")
-
     stage 'Test'
     withDockerContainer(image: "node:12") {
       dir("server") {
@@ -25,6 +22,9 @@ node {
         }
       }
     }
+
+    stage 'Build'
+		def dockerImage = docker.build("scheduly:${env.BRANCH_NAME.replace("/","-")}")
 
     stage 'Deploy to Staging'
     sh "docker tag scheduly:${env.BRANCH_NAME.replace("/","-")} scheduly:stag"
