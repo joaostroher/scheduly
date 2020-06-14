@@ -24,5 +24,5 @@ WORKDIR /app/server
 
 EXPOSE 3300
 
-CMD ["yarn", "dev"]
+CMD ["./start.sh"]
 
