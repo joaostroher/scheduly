@@ -3,7 +3,8 @@ import { Switch, Route, Redirect } from 'react-router-dom';
 
 import CustomersList from './pages/Customer/List';
 import CustomerRegister from './pages/Customer/Register';
-import Services from './pages/Services';
+import ServicesList from './pages/Services/List';
+import ServicesRegister from './pages/Services/Register';
 import SchedulesList from './pages/Schedules/List';
 import SchedulesRegister from './pages/Schedules/Register';
 import Header from './pages/Header';
@@ -27,8 +28,12 @@ export default function Routes() {
               path="/customers/register"
               component={CustomerRegister}
             />
-            <Route exact path="/services" component={Services} />
-            <Redirect to={{ pathname: '/schedules' }} />
+            <Route exact path="/services" component={ServicesList} />
+            <Route
+              exact
+              path="/services/register"
+              component={ServicesRegister}
+            />
           </Switch>
         </ContentDiv>
         <Header />

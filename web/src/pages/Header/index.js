@@ -7,7 +7,7 @@ import { Container } from './styles';
 function Header() {
   return (
     <Container>
-      <Link to="/" className="link">
+      <Link to="/schedules" className="link">
         Home
       </Link>
       <Link to="/customers" className="link">
