@@ -28,7 +28,7 @@ export default function ServiceRegister() {
       }
     }
     addService();
-  }  
+  }
 
   function handleSave(e) {
     e.preventDefault();
@@ -72,7 +72,7 @@ export default function ServiceRegister() {
       })
     );
     setActService(service);
-  }  
+  }
 
   return (
     <Container>
@@ -92,7 +92,7 @@ export default function ServiceRegister() {
           onValueChange={value => handleNumericInputChange('time', value)}
           value={actService.time || ''}
           suffix=" min"
-          allowNegative={false}      
+          allowNegative={false}
         />
       </div>
 
@@ -152,7 +152,7 @@ export default function ServiceRegister() {
     setService({ ...service, [e.target.name]: e.target.value });
   }
 
-  function handleNumericInputChange(name,value) {
+  function handleNumericInputChange(name, value) {
     //setActService({ ...service, [name]: value.floatValue, changed: true });
     setService({ ...service, [name]: value.floatValue, changed: true });
   }
@@ -160,7 +160,7 @@ export default function ServiceRegister() {
   return (
     <Container>
       <form>
-        <strong>Serviço</strong>
+        <strong>Serviço - João</strong>
         <div className="divInput">
           <label htmlFor="name">Nome</label>
           <input
