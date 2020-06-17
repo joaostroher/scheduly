@@ -108,10 +108,10 @@ export default function ServiceRegister() {
 import React, { useState, useEffect } from 'react';
 import { toast } from 'react-toastify';
 import { useHistory } from 'react-router-dom';
+import NumberFormat from 'react-number-format';
 import { Container } from './styles';
 import api from '~/services/api';
 import { getServiceLS, setServiceLS } from '~/local/service';
-import NumberFormat from 'react-number-format';
 
 export default function ServiceRegister() {
   const history = useHistory();
@@ -153,14 +153,14 @@ export default function ServiceRegister() {
   }
 
   function handleNumericInputChange(name, value) {
-    //setActService({ ...service, [name]: value.floatValue, changed: true });
+    // setActService({ ...service, [name]: value.floatValue, changed: true });
     setService({ ...service, [name]: value.floatValue, changed: true });
   }
 
   return (
     <Container>
       <form>
-        <strong>Serviço - João</strong>
+        <strong>Serviço - Stevan</strong>
         <div className="divInput">
           <label htmlFor="name">Nome</label>
           <input
