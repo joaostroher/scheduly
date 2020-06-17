@@ -160,7 +160,7 @@ export default function ServiceRegister() {
   return (
     <Container>
       <form>
-        <strong>Serviço - Stevan</strong>
+        <strong>Serviço - Jonatan</strong>
         <div className="divInput">
           <label htmlFor="name">Nome</label>
           <input
